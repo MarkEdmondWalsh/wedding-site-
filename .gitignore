@@ -1,0 +1,12 @@
+# Private data — do not commit
+invites/guests.csv
+invites/send_log.csv
+.env
+
+# macOS
+.DS_Store
+
+# Editor
+*.swp
+*.swo
+*~

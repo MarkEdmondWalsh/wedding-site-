@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciara &amp; Mark — 26th June 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== ENVELOPE LANDING ===== -->
+  <div class="envelope-screen" id="envelope-screen">
+    <div class="envelope-bg"></div>
+    <div class="envelope-container" id="envelope-container">
+      <p class="envelope-prompt">You're invited</p>
+      <div class="envelope" id="envelope">
+        <!-- Envelope flap (top triangle) -->
+        <div class="envelope-flap"></div>
+        <!-- Envelope body -->
+        <div class="envelope-body">
+          <div class="envelope-card">
+            <span class="envelope-card-text">C &amp; M</span>
+          </div>
+        </div>
+      </div>
+      <p class="envelope-cta">Tap to open</p>
+    </div>
+  </div>
+
+  <!-- ===== INVITE CAROUSEL (shown after envelope opens) ===== -->
+  <div class="invite-overlay" id="invite-overlay">
+    <div class="invite-carousel" id="invite-carousel">
+      <div class="invite-page active" id="invite-page-1">
+        <img src="images/monogram.jpg" alt="C &amp; M — 26.06.26">
+        <button class="invite-next-btn" id="invite-next-1">Next</button>
+      </div>
+      <div class="invite-page" id="invite-page-2">
+        <img src="images/invite-main.jpg" alt="Wedding invitation details">
+        <button class="invite-next-btn" id="invite-next-2">Next</button>
+      </div>
+      <div class="invite-page" id="invite-page-3">
+        <img src="images/invite-day2.jpg" alt="Day two celebrations">
+        <button class="invite-next-btn" id="invite-enter">Enter Site</button>
+      </div>
+    </div>
+    <div class="invite-dots" id="invite-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+  <!-- ===== MAIN SITE (hidden until envelope opened) ===== -->
+  <div class="main-site" id="main-site">
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+      <div class="nav-inner">
+        <a href="#hero" class="nav-logo">C &amp; M</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#story">Our Story</a></li>
+          <li><a href="#details">Details</a></li>
+          <li><a href="#schedule">Schedule</a></li>
+          <li><a href="#day2">Day Two</a></li>
+          <li><a href="#rsvp">RSVP</a></li>
+          <li><a href="#travel">Travel</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <img src="images/monogram.jpg" alt="C &amp; M monogram" class="hero-monogram">
+        <p class="hero-subtitle">Together with their families, invite you to celebrate their wedding</p>
+        <h1 class="hero-title">Ciara <span class="amp">&amp;</span> Mark</h1>
+        <p class="hero-date">Friday, 26th June 2026</p>
+        <div class="countdown" id="countdown"></div>
+        <a href="#rsvp" class="btn">RSVP Now</a>
+      </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="section" id="story">
+      <div class="container">
+        <h2 class="section-title fade-in">Our Story</h2>
+        <div class="story-content fade-in">
+          <p>We met on a rainy afternoon in October 2019 at a small coffee shop downtown. What started as a chance encounter over a shared table quickly turned into hours of conversation, laughter, and the unmistakable feeling that something special had begun.</p>
+          <p>Three years, countless adventures, and one very nervous proposal later, we're thrilled to invite you to celebrate the next chapter of our journey together. We can't wait to share this day with the people who mean the most to us.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Event Details -->
+    <section class="section section-alt" id="details">
+      <div class="container">
+        <h2 class="section-title fade-in">Event Details</h2>
+        <div class="details-grid fade-in">
+          <div class="detail-card">
+            <h3>Ceremony</h3>
+            <p class="detail-icon">&#9829;</p>
+            <p><strong>Friday, 26th June 2026</strong></p>
+            <p>1:30 PM</p>
+            <p class="detail-venue">Holy Trinity Abbey Church</p>
+            <p>Adare, Co. Limerick</p>
+          </div>
+          <div class="detail-card">
+            <h3>Reception</h3>
+            <p class="detail-icon">&#9835;</p>
+            <p><strong>Dinner, Dancing &amp; Festivities</strong></p>
+            <p class="detail-venue">The Dunraven Arms</p>
+            <p>Adare, Co. Limerick</p>
+          </div>
+          <div class="detail-card">
+            <h3>Dress Code</h3>
+            <p class="detail-icon">&#9734;</p>
+            <p><strong>Black Tie</strong></p>
+            <p>Formal attire requested</p>
+          </div>
+        </div>
+        <div class="map-embed fade-in">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2433.5!2d-8.7892!3d52.5653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x485b43a6d6f1e8e7%3A0x4e0e7c6c1e0b1c0a!2sHoly%20Trinity%20Abbey%20Church!5e0!3m2!1sen!2sie!4v1"
+            width="100%" height="300" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" title="Holy Trinity Abbey Church, Adare">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Schedule -->
+    <section class="section" id="schedule">
+      <div class="container">
+        <h2 class="section-title fade-in">Friday — The Wedding</h2>
+        <div class="timeline fade-in">
+          <div class="timeline-item">
+            <div class="timeline-time">1:00 PM</div>
+            <div class="timeline-content">
+              <h3>Guest Arrival</h3>
+              <p>Arrive at Holy Trinity Abbey Church</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">1:30 PM</div>
+            <div class="timeline-content">
+              <h3>Ceremony</h3>
+              <p>Holy Trinity Abbey Church, Adare</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">3:00 PM</div>
+            <div class="timeline-content">
+              <h3>Drinks Reception</h3>
+              <p>The Dunraven Arms</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">5:00 PM</div>
+            <div class="timeline-content">
+              <h3>Dinner</h3>
+              <p>Seated dinner &amp; speeches</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">9:00 PM</div>
+            <div class="timeline-content">
+              <h3>Dancing &amp; Festivities</h3>
+              <p>Party the night away!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Day Two -->
+    <section class="section section-alt" id="day2">
+      <div class="container">
+        <h2 class="section-title fade-in">Saturday — The Celebrations Continue</h2>
+        <div class="day2-content fade-in">
+          <p class="day2-date">Saturday, 27th June 2026</p>
+          <p>We would love for you to join us for an evening of music, food and drinks from 4pm</p>
+          <div class="day2-venue">
+            <h3>Bill Chawke's Bar</h3>
+            <p>Adare, Co. Limerick</p>
+          </div>
+          <p class="day2-closing">Looking forward to seeing you all!</p>
+          <p class="day2-names">Ciara &amp; Mark</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="section" id="rsvp">
+      <div class="container">
+        <h2 class="section-title fade-in">RSVP</h2>
+        <p class="section-subtitle fade-in">Please respond by May 1, 2026</p>
+        <form class="rsvp-form fade-in" id="rsvp-form" action="https://script.google.com/macros/s/AKfycbzhKfDvsdxOOyOn_5wArSvx2BfZWOkeZ9Datt84X9NRONKXg4P6psyEEZpAxbYISK4QnQ/exec" method="POST">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="attending">Will you attend? *</label>
+            <select id="attending" name="attending" required>
+              <option value="">Please select</option>
+              <option value="yes">Joyfully accepts</option>
+              <option value="no">Regretfully declines</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="guests">Number of Guests</label>
+            <input type="number" id="guests" name="guests" min="1" max="6" value="1">
+          </div>
+          <div class="form-group">
+            <label for="day2">Will you join us on Saturday at Bill Chawke's?</label>
+            <select id="day2-rsvp" name="day2">
+              <option value="">Please select</option>
+              <option value="yes">Yes, we'll be there!</option>
+              <option value="no">Unfortunately not</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="dietary">Dietary Requirements</label>
+            <input type="text" id="dietary" name="dietary" placeholder="e.g., vegetarian, gluten-free">
+          </div>
+          <div class="form-group">
+            <label for="message">Message for Ciara &amp; Mark</label>
+            <textarea id="message" name="message" rows="3" placeholder="We'd love to hear from you..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-full">Send RSVP</button>
+          <div class="form-status" id="form-status"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Travel & Accommodation -->
+    <section class="section section-alt" id="travel">
+      <div class="container">
+        <h2 class="section-title fade-in">Travel &amp; Accommodation</h2>
+        <div class="details-grid fade-in">
+          <div class="detail-card">
+            <h3>Accommodation</h3>
+            <p>Adare has a range of accommodation options. We recommend booking early as the village is popular in summer.</p>
+            <p><strong>The Dunraven Arms</strong> (reception venue) and nearby B&amp;Bs are great options.</p>
+          </div>
+          <div class="detail-card">
+            <h3>Getting to Adare</h3>
+            <p>Adare is located on the N21, approximately 16km from Limerick City.</p>
+            <p><strong>Shannon Airport</strong> is the nearest airport, about 40 minutes away.</p>
+          </div>
+          <div class="detail-card">
+            <h3>On the Day</h3>
+            <p>The church and reception venue are both in Adare village, a short walk apart.</p>
+            <p>Taxis can be arranged for the evening.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p class="footer-names">Ciara &amp; Mark</p>
+        <p class="footer-date">26 &middot; 06 &middot; 26</p>
+      </div>
+    </footer>
+
+  </div><!-- end main-site -->
+
+  <script src="js/main.js"></script>
+</body>
+</html>
