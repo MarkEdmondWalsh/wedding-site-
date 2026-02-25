@@ -70,7 +70,7 @@ a:hover {
 .envelope-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #8a9a5b 0%, #6b7d3e 40%, #9aaa6b 100%);
+  background: #e8e0d0;
 }
 
 .envelope-container {
@@ -78,62 +78,68 @@ a:hover {
   z-index: 1;
   text-align: center;
   cursor: pointer;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .envelope-prompt {
   font-family: var(--font-heading);
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-weight: 400;
-  color: var(--white);
+  color: var(--sage-dark);
   letter-spacing: 3px;
-  margin-bottom: 32px;
-  opacity: 0.9;
+  margin-bottom: 40px;
 }
 
 .envelope-cta {
   font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 400;
-  color: var(--white);
+  color: var(--sage-dark);
   letter-spacing: 3px;
   text-transform: uppercase;
-  margin-top: 28px;
-  opacity: 0.7;
+  margin-top: 36px;
+  opacity: 0.6;
   animation: pulse 2s ease-in-out infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
 }
 
-/* Envelope shape */
+/* Envelope card (the inner "letter") */
 .envelope {
-  width: 340px;
-  height: 235px;
+  width: 320px;
+  height: 220px;
   position: relative;
-  margin: 0 auto;
   perspective: 600px;
 }
 
 .envelope-body {
   width: 100%;
   height: 100%;
-  background: #e8e0d0;
+  background: var(--cream);
   border-radius: 4px;
   position: relative;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  border: 1px solid #d6cfc2;
 }
 
 .envelope-card {
   width: 80%;
   height: 70%;
-  background: var(--cream);
-  border: 1px solid #d6cfc2;
+  background: var(--white);
+  border: 1px solid #e0dbd2;
   border-radius: 2px;
   display: flex;
   align-items: center;
@@ -142,12 +148,12 @@ a:hover {
 }
 
 .envelope.opened .envelope-card {
-  transform: translateY(-200px);
+  transform: translateY(-300px);
 }
 
 .envelope-card-text {
   font-family: var(--font-heading);
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 600;
   color: var(--sage-dark);
   letter-spacing: 2px;
@@ -159,12 +165,11 @@ a:hover {
   left: 0;
   width: 100%;
   height: 50%;
-  background: #e8e0d0;
+  background: var(--cream);
   clip-path: polygon(0 0, 50% 100%, 100% 0);
   z-index: 2;
   transform-origin: top center;
   transition: transform 0.6s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .envelope.opened .envelope-flap {
@@ -860,7 +865,7 @@ a:hover {
 
   .envelope {
     width: 280px;
-    height: 194px;
+    height: 193px;
   }
 }
 
