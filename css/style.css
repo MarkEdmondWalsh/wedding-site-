@@ -113,7 +113,7 @@ a:hover {
   50% { opacity: 0.8; }
 }
 
-/* Envelope card (the inner "letter") */
+/* Envelope card */
 .envelope {
   width: 320px;
   height: 220px;
@@ -124,10 +124,10 @@ a:hover {
 .envelope-body {
   width: 100%;
   height: 100%;
-  background: var(--cream);
-  border-radius: 4px;
+  background: var(--white);
+  border-radius: 6px;
   position: relative;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,44 +136,30 @@ a:hover {
 }
 
 .envelope-card {
-  width: 80%;
-  height: 70%;
-  background: var(--white);
-  border: 1px solid #e0dbd2;
-  border-radius: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.8s ease 0.3s;
 }
 
 .envelope.opened .envelope-card {
-  transform: translateY(-300px);
+  animation: cardSlideUp 0.8s ease 0.2s forwards;
+}
+
+@keyframes cardSlideUp {
+  to { opacity: 0; transform: translateY(-60px); }
 }
 
 .envelope-card-text {
   font-family: var(--font-heading);
-  font-size: 2.2rem;
+  font-size: 2.8rem;
   font-weight: 600;
   color: var(--sage-dark);
-  letter-spacing: 2px;
+  letter-spacing: 4px;
 }
 
+/* Hide the flap — clean card look */
 .envelope-flap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50%;
-  background: var(--cream);
-  clip-path: polygon(0 0, 50% 100%, 100% 0);
-  z-index: 2;
-  transform-origin: top center;
-  transition: transform 0.6s ease;
-}
-
-.envelope.opened .envelope-flap {
-  transform: rotateX(180deg);
+  display: none;
 }
 
 /* ===== INVITE CAROUSEL ===== */
