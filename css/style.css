@@ -109,8 +109,8 @@ a:hover {
 
 /* Envelope shape */
 .envelope {
-  width: 260px;
-  height: 180px;
+  width: 340px;
+  height: 235px;
   position: relative;
   margin: 0 auto;
   perspective: 600px;
@@ -176,7 +176,7 @@ a:hover {
   position: fixed;
   inset: 0;
   z-index: 9998;
-  background: rgba(0, 0, 0, 0.85);
+  background: var(--sage-bg);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -193,14 +193,20 @@ a:hover {
 
 .invite-carousel {
   position: relative;
-  width: 90%;
-  max-width: 420px;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
 }
 
 .invite-page {
   display: none;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  position: relative;
 }
 
 .invite-page.active {
@@ -209,17 +215,21 @@ a:hover {
 
 .invite-page img {
   width: 100%;
-  max-height: 75vh;
+  height: 100vh;
+  height: 100dvh;
   object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+  padding: 16px 16px 100px;
 }
 
 .invite-next-btn {
-  margin-top: 24px;
-  padding: 12px 48px;
-  border: 2px solid var(--white);
-  background: transparent;
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 14px 48px;
+  min-height: 48px;
+  border: 2px solid var(--sage-dark);
+  background: var(--sage);
   color: var(--white);
   font-family: var(--font-body);
   font-size: 0.8rem;
@@ -228,29 +238,34 @@ a:hover {
   text-transform: uppercase;
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
+  z-index: 2;
 }
 
 .invite-next-btn:hover {
-  background: var(--white);
-  color: var(--charcoal);
+  background: var(--sage-dark);
+  color: var(--white);
 }
 
 .invite-dots {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   gap: 10px;
-  margin-top: 20px;
+  z-index: 2;
 }
 
 .dot {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--sage-light);
   transition: background 0.3s;
 }
 
 .dot.active {
-  background: var(--white);
+  background: var(--sage-dark);
 }
 
 /* ===== MAIN SITE ===== */
@@ -844,8 +859,8 @@ a:hover {
   }
 
   .envelope {
-    width: 220px;
-    height: 152px;
+    width: 280px;
+    height: 194px;
   }
 }
 
@@ -888,7 +903,7 @@ a:hover {
   }
 
   .envelope {
-    width: 200px;
-    height: 138px;
+    width: 240px;
+    height: 166px;
   }
 }
