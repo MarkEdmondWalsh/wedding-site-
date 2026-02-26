@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=8">
+  <link rel="stylesheet" href="css/style.css?v=9">
 </head>
 <body>
 
@@ -17,8 +17,10 @@
     <div class="envelope-container" id="envelope-container">
       <p class="envelope-prompt">You're invited</p>
       <div class="envelope" id="envelope">
-        <!-- Envelope flap (top triangle) -->
-        <div class="envelope-flap"></div>
+        <!-- Envelope flap (top triangle with visible outline) -->
+        <svg class="envelope-flap" viewBox="0 0 340 110" preserveAspectRatio="none">
+          <polygon points="0,0 170,108 340,0" fill="#fefefe" stroke="#b8ad9a" stroke-width="2"/>
+        </svg>
         <!-- Envelope body -->
         <div class="envelope-body">
           <div class="envelope-card">
