@@ -801,6 +801,22 @@ a:hover {
   opacity: 0.7;
 }
 
+.footer-contact {
+  margin-top: 20px;
+  font-size: 0.85rem;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+.footer-contact a {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+.footer-contact a:hover {
+  color: var(--gold-light);
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .nav-links {

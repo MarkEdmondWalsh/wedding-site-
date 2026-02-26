@@ -5,11 +5,30 @@ const envelope = document.getElementById('envelope');
 const inviteOverlay = document.getElementById('invite-overlay');
 const mainSite = document.getElementById('main-site');
 
-envelopeContainer.addEventListener('click', () => {
-  // Open the envelope flap
-  envelope.classList.add('opened');
+function enterSite() {
+  envelopeScreen.classList.add('hidden');
+  inviteOverlay.classList.remove('active');
+  mainSite.classList.add('visible');
+  document.body.style.overflow = '';
+  localStorage.setItem('seen-intro', '1');
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+  initFadeObserver();
+}
 
-  // After flap opens, fade out envelope and show invite carousel
+// Skip intro for returning visitors
+if (localStorage.getItem('seen-intro')) {
+  envelopeScreen.classList.add('hidden');
+  mainSite.classList.add('visible');
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+  initFadeObserver();
+} else {
+  document.body.style.overflow = 'hidden';
+}
+
+envelopeContainer.addEventListener('click', () => {
+  envelope.classList.add('opened');
   setTimeout(() => {
     envelopeScreen.classList.add('hidden');
     inviteOverlay.classList.add('active');
@@ -37,19 +56,7 @@ function showPage(index) {
 
 document.getElementById('invite-next-1').addEventListener('click', () => showPage(1));
 document.getElementById('invite-next-2').addEventListener('click', () => showPage(2));
-document.getElementById('invite-enter').addEventListener('click', () => {
-  inviteOverlay.classList.remove('active');
-  mainSite.classList.add('visible');
-  document.body.style.overflow = '';
-  // Start countdown once site is visible
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-  // Observe fade-in elements
-  initFadeObserver();
-});
-
-// Prevent scrolling while envelope/invite is showing
-document.body.style.overflow = 'hidden';
+document.getElementById('invite-enter').addEventListener('click', enterSite);
 
 // ===== Countdown Timer =====
 const WEDDING_DATE = new Date('2026-06-26T13:30:00+01:00');
@@ -134,6 +141,14 @@ function initFadeObserver() {
   );
   fadeElements.forEach((el) => fadeObserver.observe(el));
 }
+
+// ===== RSVP Conditional Fields =====
+const attendingSelect = document.getElementById('attending');
+const attendingFields = document.getElementById('attending-fields');
+
+attendingSelect.addEventListener('change', () => {
+  attendingFields.style.display = attendingSelect.value === 'yes' ? 'block' : 'none';
+});
 
 // ===== RSVP Form Handling =====
 // Replace this URL after deploying the Google Apps Script web app
