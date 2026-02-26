@@ -52,7 +52,7 @@ document.getElementById('invite-enter').addEventListener('click', () => {
 document.body.style.overflow = 'hidden';
 
 // ===== Countdown Timer =====
-const WEDDING_DATE = new Date('2026-06-26T13:30:00');
+const WEDDING_DATE = new Date('2026-06-26T13:30:00+01:00');
 
 function updateCountdown() {
   const el = document.getElementById('countdown');
@@ -162,21 +162,21 @@ form.addEventListener('submit', async (e) => {
   submitBtn.textContent = 'Sending...';
 
   try {
-    // Apps Script doesn't support CORS, so we use no-cors mode.
-    // This means we can't read the response, but the data is sent successfully.
-    await fetch(APPS_SCRIPT_URL, {
+    const response = await fetch(APPS_SCRIPT_URL, {
       method: 'POST',
-      mode: 'no-cors',
       body: new URLSearchParams(new FormData(form)),
     });
 
-    // With no-cors we get an opaque response, so we assume success
-    formStatus.textContent = 'Thank you! Your RSVP has been received.';
-    formStatus.classList.add('success');
-    form.reset();
+    if (response.ok) {
+      formStatus.textContent = 'Thank you! Your RSVP has been received.';
+      formStatus.classList.add('success');
+      form.reset();
+    } else {
+      throw new Error('Server error');
+    }
   } catch {
     formStatus.textContent =
-      'Something went wrong. Please try again or email us directly.';
+      'Something went wrong. Please try again or contact us directly.';
     formStatus.classList.add('error');
   } finally {
     submitBtn.disabled = false;

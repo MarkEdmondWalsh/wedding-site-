@@ -757,6 +757,7 @@ a:hover {
 .form-group textarea:focus {
   outline: none;
   border-color: var(--sage);
+  box-shadow: 0 0 0 3px rgba(138, 154, 91, 0.2);
 }
 
 .form-group textarea {
