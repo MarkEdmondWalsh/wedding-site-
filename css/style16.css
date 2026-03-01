@@ -827,39 +827,25 @@ a:hover {
   color: var(--gold-light);
 }
 
-.hero-monogram-wrap {
-  cursor: pointer;
-  position: relative;
-  display: block;
-  margin: 0 auto 24px;
-  transition: transform 0.3s;
-  background: none;
-  border: none;
-  padding: 0;
-  text-align: center;
-}
-
-.hero-monogram-wrap:hover {
-  transform: scale(1.05);
-}
-
-.hero-monogram-wrap .hero-monogram {
-  margin: 0;
-}
-
-.hero-monogram-label {
-  display: block;
-  margin-top: 8px;
+.hero-invite-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 8px 24px;
   font-family: var(--font-body);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.8);
-  transition: color 0.3s;
+  color: var(--white);
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
 }
 
-.hero-monogram-wrap:hover .hero-monogram-label {
+.hero-invite-link:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--white);
   color: var(--white);
 }
 
