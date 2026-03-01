@@ -174,39 +174,6 @@ document.getElementById('envelope-replay').addEventListener('click', () => {
   window.scrollTo(0, 0);
 });
 
-// ===== RSVP Conditional Fields =====
-const attendingSelect = document.getElementById('attending');
-const attendingFields = document.getElementById('attending-fields');
-const guestsSelect = document.getElementById('guests');
-const day2CoupleWrap = document.getElementById('day2-couple-wrap');
-const day2Rsvp = document.getElementById('day2-rsvp');
-const day2SingleWrap = document.getElementById('day2-single-wrap');
-const day2RsvpSingle = document.getElementById('day2-rsvp-single');
-
-function updateRsvpFields() {
-  const attending = attendingSelect.value === 'yes';
-  attendingFields.style.display = attending ? 'block' : 'none';
-
-  if (attending) {
-    const guestCount = guestsSelect.value;
-    // Show couple day2 options for 2 guests, single options for 1
-    if (guestCount === '2') {
-      day2CoupleWrap.style.display = '';
-      day2Rsvp.name = 'day2';
-      day2SingleWrap.style.display = 'none';
-      day2RsvpSingle.name = '';
-    } else {
-      day2CoupleWrap.style.display = 'none';
-      day2Rsvp.name = '';
-      day2SingleWrap.style.display = '';
-      day2RsvpSingle.name = 'day2';
-    }
-  }
-}
-
-attendingSelect.addEventListener('change', updateRsvpFields);
-guestsSelect.addEventListener('change', updateRsvpFields);
-
 // ===== RSVP Form Handling =====
 // Replace this URL after deploying the Google Apps Script web app
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzhKfDvsdxOOyOn_5wArSvx2BfZWOkeZ9Datt84X9NRONKXg4P6psyEEZpAxbYISK4QnQ/exec';
@@ -221,9 +188,10 @@ form.addEventListener('submit', async (e) => {
 
   const guest1Name = form.elements.guest1_name.value.trim();
   const email = form.elements.email.value.trim();
-  const attending = form.elements.attending.value;
+  const day1 = form.elements.day1.value;
+  const day2 = form.elements.day2.value;
 
-  if (!guest1Name || !email || !attending) {
+  if (!guest1Name || !email || !day1 || !day2) {
     formStatus.textContent = 'Please fill in all required fields.';
     formStatus.classList.add('error');
     return;

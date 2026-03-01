@@ -226,45 +226,26 @@
             <input type="email" id="email" name="email" required>
           </div>
           <div class="form-group">
-            <label for="attending">Will you attend? *</label>
-            <select id="attending" name="attending" required>
+            <label for="day1">Friday — The Wedding *</label>
+            <select id="day1" name="day1" required>
               <option value="">Please select</option>
               <option value="yes">Joyfully accepts</option>
               <option value="no">Regretfully declines</option>
             </select>
           </div>
-          <div id="attending-fields" style="display: none;">
-            <div class="form-group">
-              <label for="guests">How many guests attending? *</label>
-              <select id="guests" name="guests">
-                <option value="1">1</option>
-                <option value="2">2</option>
-              </select>
-            </div>
-            <div class="form-group" id="day2-couple-wrap" style="display: none;">
-              <label for="day2-rsvp">Will you join us on Saturday at Bill Chawke's? *</label>
-              <select id="day2-rsvp" name="">
-                <option value="">Please select</option>
-                <option value="both">Both of us</option>
-                <option value="one">Just one of us</option>
-                <option value="neither">Neither</option>
-              </select>
-            </div>
-            <div class="form-group" id="day2-single-wrap">
-              <label for="day2-rsvp-single">Will you join us on Saturday at Bill Chawke's? *</label>
-              <select id="day2-rsvp-single" name="day2">
-                <option value="">Please select</option>
-                <option value="yes">Yes, I'll be there!</option>
-                <option value="no">Unfortunately not</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="dietary">Dietary Requirements</label>
-              <select id="dietary" name="dietary">
-                <option value="none">None</option>
-                <option value="vegetarian">Vegetarian</option>
-              </select>
-            </div>
+          <div class="form-group">
+            <label for="day2">Saturday — Bill Chawke's *</label>
+            <select id="day2" name="day2" required>
+              <option value="">Please select</option>
+              <option value="yes">We'll be there!</option>
+              <option value="no">Unfortunately not</option>
+            </select>
+          </div>
+          <div class="form-group form-group-checkbox">
+            <label>
+              <input type="checkbox" id="vegetarian" name="vegetarian" value="yes">
+              Vegetarian
+            </label>
           </div>
           <button type="submit" class="btn btn-full">Send RSVP</button>
           <div class="form-status" id="form-status"></div>
