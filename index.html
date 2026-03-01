@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style16.css?v=11">
+  <link rel="stylesheet" href="css/style16.css?v=12">
 </head>
 <body>
 
@@ -214,14 +214,32 @@
         <h2 class="section-title fade-in">RSVP</h2>
         <p class="section-subtitle fade-in">Please respond by April 1, 2026</p>
         <form class="rsvp-form fade-in" id="rsvp-form">
-          <div class="form-group">
-            <label for="guest1-name">Guest 1 — Full Name *</label>
-            <input type="text" id="guest1-name" name="guest1_name" required>
-          </div>
-          <div class="form-group">
-            <label for="guest2-name">Guest 2 — Full Name</label>
-            <input type="text" id="guest2-name" name="guest2_name" placeholder="Leave blank if attending alone">
-          </div>
+          <fieldset class="rsvp-guest-group">
+            <legend>Guest 1</legend>
+            <div class="form-group">
+              <label for="guest1-name">Full Name *</label>
+              <input type="text" id="guest1-name" name="guest1_name" required>
+            </div>
+            <div class="form-group form-group-checkbox">
+              <label>
+                <input type="checkbox" id="guest1-vegetarian" name="guest1_vegetarian" value="yes">
+                Vegetarian
+              </label>
+            </div>
+          </fieldset>
+          <fieldset class="rsvp-guest-group">
+            <legend>Guest 2</legend>
+            <div class="form-group">
+              <label for="guest2-name">Full Name</label>
+              <input type="text" id="guest2-name" name="guest2_name" placeholder="Leave blank if attending alone">
+            </div>
+            <div class="form-group form-group-checkbox">
+              <label>
+                <input type="checkbox" id="guest2-vegetarian" name="guest2_vegetarian" value="yes">
+                Vegetarian
+              </label>
+            </div>
+          </fieldset>
           <div class="form-group">
             <label for="email">Email *</label>
             <input type="email" id="email" name="email" required>
@@ -241,12 +259,6 @@
               <option value="yes">We'll be there!</option>
               <option value="no">Unfortunately not</option>
             </select>
-          </div>
-          <div class="form-group form-group-checkbox">
-            <label>
-              <input type="checkbox" id="vegetarian" name="vegetarian" value="yes">
-              Vegetarian
-            </label>
           </div>
           <button type="submit" class="btn btn-full">Send RSVP</button>
           <div class="form-status" id="form-status"></div>
@@ -288,7 +300,7 @@
 
   </div><!-- end main-site -->
 
-  <script src="js/main16.js?v=11"></script>
+  <script src="js/main16.js?v=12"></script>
 </body>
 </html>
 
