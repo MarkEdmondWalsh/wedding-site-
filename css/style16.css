@@ -833,29 +833,36 @@ a:hover {
   color: var(--gold-light);
 }
 
-.envelope-replay {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: none;
-  border: 1.5px solid rgba(255, 255, 255, 0.5);
-  border-radius: 30px;
-  padding: 10px 24px;
-  color: rgba(255, 255, 255, 0.85);
+.hero-monogram-wrap {
   cursor: pointer;
-  margin: 20px 0 12px;
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  transition: color 0.3s, border-color 0.3s, background 0.3s;
+  position: relative;
+  display: inline-block;
+  margin: 0 auto 24px;
+  transition: transform 0.3s;
 }
 
-.envelope-replay:hover {
+.hero-monogram-wrap:hover {
+  transform: scale(1.05);
+}
+
+.hero-monogram-wrap .hero-monogram {
+  margin: 0;
+}
+
+.hero-monogram-label {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.3s;
+}
+
+.hero-monogram-wrap:hover .hero-monogram-label {
   color: var(--white);
-  border-color: var(--white);
-  background: rgba(255, 255, 255, 0.1);
 }
 
 /* ===== Responsive ===== */
