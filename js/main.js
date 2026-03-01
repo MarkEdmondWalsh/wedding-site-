@@ -8,6 +8,7 @@ const mainSite = document.getElementById('main-site');
 function enterSite() {
   envelopeScreen.classList.add('hidden');
   inviteOverlay.classList.remove('active');
+  inviteOverlay.style.display = 'none';
   mainSite.classList.add('visible');
   document.body.style.overflow = '';
   localStorage.setItem('seen-intro', '1');
@@ -19,6 +20,7 @@ function enterSite() {
 // Skip intro for returning visitors
 if (localStorage.getItem('seen-intro')) {
   envelopeScreen.classList.add('hidden');
+  inviteOverlay.style.display = 'none';
   mainSite.classList.add('visible');
   updateCountdown();
   setInterval(updateCountdown, 1000);
