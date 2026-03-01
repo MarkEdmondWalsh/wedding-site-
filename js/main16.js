@@ -15,6 +15,10 @@ function enterSite() {
   updateCountdown();
   setInterval(updateCountdown, 1000);
   initFadeObserver();
+  // Safety fallback — force all content visible after 1s
+  setTimeout(() => {
+    document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+  }, 1000);
 }
 
 // Skip intro for returning visitors
@@ -25,6 +29,10 @@ if (localStorage.getItem('seen-intro')) {
   updateCountdown();
   setInterval(updateCountdown, 1000);
   initFadeObserver();
+  // Safety fallback — force all content visible after 1s
+  setTimeout(() => {
+    document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+  }, 1000);
 } else {
   document.body.style.overflow = 'hidden';
 }
