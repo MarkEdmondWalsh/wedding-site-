@@ -1,3 +1,9 @@
+// ===== Force cache reset for v5 =====
+if (!localStorage.getItem('site-v5')) {
+  localStorage.clear();
+  localStorage.setItem('site-v5', '1');
+}
+
 // ===== Envelope Opening =====
 const envelopeScreen = document.getElementById('envelope-screen');
 const envelopeContainer = document.getElementById('envelope-container');
