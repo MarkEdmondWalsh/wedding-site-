@@ -14,7 +14,7 @@
   <link rel="icon" href="images/monogram.jpg" type="image/jpeg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style16.css">
 </head>
 <body>
@@ -214,8 +214,12 @@
         <p class="section-subtitle fade-in">Please respond by April 1, 2026</p>
         <form class="rsvp-form fade-in" id="rsvp-form">
           <div class="form-group">
-            <label for="name">Full Name *</label>
-            <input type="text" id="name" name="name" required>
+            <label for="guest1-name">Guest 1 — Full Name *</label>
+            <input type="text" id="guest1-name" name="guest1_name" required>
+          </div>
+          <div class="form-group">
+            <label for="guest2-name">Guest 2 — Full Name</label>
+            <input type="text" id="guest2-name" name="guest2_name" placeholder="Leave blank if attending alone">
           </div>
           <div class="form-group">
             <label for="email">Email *</label>
@@ -231,24 +235,35 @@
           </div>
           <div id="attending-fields" style="display: none;">
             <div class="form-group">
-              <label for="guests">Number of Guests</label>
-              <input type="number" id="guests" name="guests" min="1" max="6" value="1">
+              <label for="guests">How many guests attending? *</label>
+              <select id="guests" name="guests">
+                <option value="1">1</option>
+                <option value="2">2</option>
+              </select>
             </div>
-            <div class="form-group">
-              <label for="guest-names">Guest Names</label>
-              <input type="text" id="guest-names" name="guest_names" placeholder="e.g., John Smith, Jane Smith">
-            </div>
-            <div class="form-group">
-              <label for="day2-rsvp">Will you join us on Saturday at Bill Chawke's?</label>
-              <select id="day2-rsvp" name="day2">
+            <div class="form-group" id="day2-couple-wrap" style="display: none;">
+              <label for="day2-rsvp">Will you join us on Saturday at Bill Chawke's? *</label>
+              <select id="day2-rsvp" name="">
                 <option value="">Please select</option>
-                <option value="yes">Yes, we'll be there!</option>
+                <option value="both">Both of us</option>
+                <option value="one">Just one of us</option>
+                <option value="neither">Neither</option>
+              </select>
+            </div>
+            <div class="form-group" id="day2-single-wrap">
+              <label for="day2-rsvp-single">Will you join us on Saturday at Bill Chawke's? *</label>
+              <select id="day2-rsvp-single" name="day2">
+                <option value="">Please select</option>
+                <option value="yes">Yes, I'll be there!</option>
                 <option value="no">Unfortunately not</option>
               </select>
             </div>
             <div class="form-group">
               <label for="dietary">Dietary Requirements</label>
-              <input type="text" id="dietary" name="dietary" placeholder="e.g., vegetarian, gluten-free">
+              <select id="dietary" name="dietary">
+                <option value="none">None</option>
+                <option value="vegetarian">Vegetarian</option>
+              </select>
             </div>
           </div>
           <button type="submit" class="btn btn-full">Send RSVP</button>
@@ -286,6 +301,12 @@
       <div class="container">
         <p class="footer-names">Ciara &amp; Mark</p>
         <p class="footer-date">26 &middot; 06 &middot; 26</p>
+        <button class="envelope-replay" id="envelope-replay" title="View Invitation">
+          <svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1" width="26" height="20" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <path d="M1 1 L14 12 L27 1" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+        </button>
         <p class="footer-contact">Questions? Email us at <a href="mailto:markwalsh795@gmail.com">markwalsh795@gmail.com</a></p>
       </div>
     </footer>

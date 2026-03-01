@@ -8,8 +8,8 @@
 :root {
   --white: #fefefe;
   --cream: #f8f6f0;
-  --sage: #8a9a5b;
-  --sage-dark: #6b7d3e;
+  --sage: #9aaa5b;
+  --sage-dark: #5c6b28;
   --sage-light: #c5d4a0;
   --sage-bg: #e8edda;
   --gold: #9a8a4e;
@@ -17,8 +17,9 @@
   --charcoal: #3a3a3a;
   --text: #4a4a4a;
   --text-light: #7a7a7a;
-  --font-heading: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'Montserrat', 'Helvetica Neue', sans-serif;
+  --font-heading: 'Pinyon Script', cursive;
+  --font-body: 'EB Garamond', Georgia, serif;
+  --font-script: 'Pinyon Script', cursive;
 }
 
 html {
@@ -28,7 +29,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  font-weight: 300;
+  font-weight: 400;
   color: var(--text);
   background: var(--white);
   line-height: 1.7;
@@ -68,7 +69,7 @@ a:hover {
 .envelope-bg {
   position: absolute;
   inset: 0;
-  background: #e8e0d0;
+  background: #f0ebe0;
 }
 
 .envelope-container {
@@ -86,19 +87,19 @@ a:hover {
 }
 
 .envelope-prompt {
-  font-family: var(--font-heading);
-  font-size: 1.8rem;
+  font-family: var(--font-script);
+  font-size: 2.2rem;
   font-weight: 400;
-  color: var(--sage-dark);
-  letter-spacing: 3px;
+  color: #5c6b28;
+  letter-spacing: 1px;
   margin-bottom: 40px;
 }
 
 .envelope-cta {
   font-family: var(--font-body);
   font-size: 0.75rem;
-  font-weight: 400;
-  color: var(--sage-dark);
+  font-weight: 500;
+  color: #5c6b28;
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-top: 36px;
@@ -150,11 +151,11 @@ a:hover {
 }
 
 .envelope-card-text {
-  font-family: var(--font-heading);
+  font-family: var(--font-script);
   font-size: 2.8rem;
-  font-weight: 600;
-  color: var(--sage-dark);
-  letter-spacing: 4px;
+  font-weight: 400;
+  color: #5c6b28;
+  letter-spacing: 2px;
 }
 
 /* Flap — SVG triangle with visible stroke outline */
@@ -178,7 +179,7 @@ a:hover {
   position: fixed;
   inset: 0;
   z-index: 9998;
-  background: var(--sage-bg);
+  background: #f0ebe0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -435,7 +436,7 @@ a:hover {
   justify-content: center;
   text-align: center;
   color: var(--white);
-  background: linear-gradient(135deg, #8a9a5b 0%, #6b7d3e 40%, #9aaa6b 100%);
+  background: linear-gradient(135deg, #9aaa5b 0%, #5c6b28 40%, #7a8d3e 100%);
   background-size: cover;
   background-position: center;
 }
@@ -815,6 +816,27 @@ a:hover {
 
 .footer-contact a:hover {
   color: var(--gold-light);
+}
+
+.envelope-replay {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  margin: 16px 0 8px;
+  transition: color 0.3s, border-color 0.3s, transform 0.3s;
+}
+
+.envelope-replay:hover {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.8);
+  transform: scale(1.1);
 }
 
 /* ===== Responsive ===== */

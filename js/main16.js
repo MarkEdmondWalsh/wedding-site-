@@ -158,13 +158,54 @@ function initFadeObserver() {
   fadeElements.forEach((el) => fadeObserver.observe(el));
 }
 
+// ===== Envelope Replay =====
+document.getElementById('envelope-replay').addEventListener('click', () => {
+  localStorage.removeItem('seen-intro');
+  // Reset envelope state
+  envelope.classList.remove('opened');
+  envelopeScreen.classList.remove('hidden');
+  inviteOverlay.classList.remove('active');
+  inviteOverlay.style.display = '';
+  mainSite.classList.remove('visible');
+  document.body.style.overflow = 'hidden';
+  // Reset carousel to page 1
+  showPage(0);
+  // Scroll main site back to top for when they return
+  window.scrollTo(0, 0);
+});
+
 // ===== RSVP Conditional Fields =====
 const attendingSelect = document.getElementById('attending');
 const attendingFields = document.getElementById('attending-fields');
+const guestsSelect = document.getElementById('guests');
+const day2CoupleWrap = document.getElementById('day2-couple-wrap');
+const day2Rsvp = document.getElementById('day2-rsvp');
+const day2SingleWrap = document.getElementById('day2-single-wrap');
+const day2RsvpSingle = document.getElementById('day2-rsvp-single');
 
-attendingSelect.addEventListener('change', () => {
-  attendingFields.style.display = attendingSelect.value === 'yes' ? 'block' : 'none';
-});
+function updateRsvpFields() {
+  const attending = attendingSelect.value === 'yes';
+  attendingFields.style.display = attending ? 'block' : 'none';
+
+  if (attending) {
+    const guestCount = guestsSelect.value;
+    // Show couple day2 options for 2 guests, single options for 1
+    if (guestCount === '2') {
+      day2CoupleWrap.style.display = '';
+      day2Rsvp.name = 'day2';
+      day2SingleWrap.style.display = 'none';
+      day2RsvpSingle.name = '';
+    } else {
+      day2CoupleWrap.style.display = 'none';
+      day2Rsvp.name = '';
+      day2SingleWrap.style.display = '';
+      day2RsvpSingle.name = 'day2';
+    }
+  }
+}
+
+attendingSelect.addEventListener('change', updateRsvpFields);
+guestsSelect.addEventListener('change', updateRsvpFields);
 
 // ===== RSVP Form Handling =====
 // Replace this URL after deploying the Google Apps Script web app
@@ -178,11 +219,11 @@ form.addEventListener('submit', async (e) => {
   formStatus.textContent = '';
   formStatus.className = 'form-status';
 
-  const name = form.elements.name.value.trim();
+  const guest1Name = form.elements.guest1_name.value.trim();
   const email = form.elements.email.value.trim();
   const attending = form.elements.attending.value;
 
-  if (!name || !email || !attending) {
+  if (!guest1Name || !email || !attending) {
     formStatus.textContent = 'Please fill in all required fields.';
     formStatus.classList.add('error');
     return;
