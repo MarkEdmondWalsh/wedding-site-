@@ -1,180 +1,58 @@
-// ===== Force cache reset for v5 =====
-if (!localStorage.getItem('site-v5')) {
-  localStorage.clear();
-  localStorage.setItem('site-v5', '1');
-}
+// ===== Elements =====
+var envelopeScreen = document.getElementById('envelope-screen');
+var envelopeContainer = document.getElementById('envelope-container');
+var envelope = document.getElementById('envelope');
+var inviteOverlay = document.getElementById('invite-overlay');
+var mainSite = document.getElementById('main-site');
 
-// ===== Envelope Opening =====
-const envelopeScreen = document.getElementById('envelope-screen');
-const envelopeContainer = document.getElementById('envelope-container');
-const envelope = document.getElementById('envelope');
-const inviteOverlay = document.getElementById('invite-overlay');
-const mainSite = document.getElementById('main-site');
+// ===== Always start with envelope visible =====
+document.body.style.overflow = 'hidden';
 
-function enterSite() {
-  envelopeScreen.classList.add('hidden');
-  inviteOverlay.classList.remove('active');
-  inviteOverlay.style.display = 'none';
-  mainSite.classList.add('visible');
-  document.body.style.overflow = '';
-  localStorage.setItem('seen-intro', '1');
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-  initFadeObserver();
-  // Safety fallback — force all content visible after 1s
-  setTimeout(() => {
-    document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
-  }, 1000);
-}
-
-// Skip intro for returning visitors
-if (localStorage.getItem('seen-intro')) {
-  envelopeScreen.classList.add('hidden');
-  inviteOverlay.style.display = 'none';
-  mainSite.classList.add('visible');
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-  initFadeObserver();
-  // Safety fallback — force all content visible after 1s
-  setTimeout(() => {
-    document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
-  }, 1000);
-} else {
-  document.body.style.overflow = 'hidden';
-}
-
-envelopeContainer.addEventListener('click', () => {
+// ===== Envelope tap → open and show carousel =====
+envelopeContainer.addEventListener('click', function () {
   envelope.classList.add('opened');
-  setTimeout(() => {
+  setTimeout(function () {
     envelopeScreen.classList.add('hidden');
     inviteOverlay.classList.add('active');
   }, 1000);
 });
 
 // ===== Invite Carousel =====
-const pages = [
+var carouselPages = [
   document.getElementById('invite-page-1'),
   document.getElementById('invite-page-2'),
-  document.getElementById('invite-page-3'),
+  document.getElementById('invite-page-3')
 ];
-const dots = document.querySelectorAll('.dot');
-let currentPage = 0;
+var dots = document.querySelectorAll('.dot');
+var currentPage = 0;
 
 function showPage(index) {
-  pages.forEach((p, i) => {
-    p.classList.toggle('active', i === index);
-  });
-  dots.forEach((d, i) => {
-    d.classList.toggle('active', i === index);
-  });
+  for (var i = 0; i < carouselPages.length; i++) {
+    carouselPages[i].classList.toggle('active', i === index);
+  }
+  for (var j = 0; j < dots.length; j++) {
+    dots[j].classList.toggle('active', j === index);
+  }
   currentPage = index;
 }
 
-document.getElementById('invite-next-1').addEventListener('click', () => showPage(1));
-document.getElementById('invite-next-2').addEventListener('click', () => showPage(2));
-document.getElementById('invite-enter').addEventListener('click', enterSite);
+document.getElementById('invite-next-1').addEventListener('click', function () { showPage(1); });
+document.getElementById('invite-next-2').addEventListener('click', function () { showPage(2); });
+document.getElementById('invite-enter').addEventListener('click', function () { enterSite(); });
 
-// ===== Countdown Timer =====
-const WEDDING_DATE = new Date('2026-06-26T13:30:00+01:00');
-
-function updateCountdown() {
-  const el = document.getElementById('countdown');
-  if (!el) return;
-
-  const now = new Date();
-  const diff = WEDDING_DATE - now;
-
-  if (diff <= 0) {
-    el.innerHTML = '<p style="font-size:1.2rem; letter-spacing:2px;">Today is the day!</p>';
-    return;
-  }
-
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / (1000 * 60)) % 60);
-  const seconds = Math.floor((diff / 1000) % 60);
-
-  el.innerHTML = `
-    <div class="countdown-unit">
-      <span class="countdown-number">${days}</span>
-      <span class="countdown-label">Days</span>
-    </div>
-    <div class="countdown-unit">
-      <span class="countdown-number">${hours}</span>
-      <span class="countdown-label">Hours</span>
-    </div>
-    <div class="countdown-unit">
-      <span class="countdown-number">${minutes}</span>
-      <span class="countdown-label">Min</span>
-    </div>
-    <div class="countdown-unit">
-      <span class="countdown-number">${seconds}</span>
-      <span class="countdown-label">Sec</span>
-    </div>
-  `;
+// ===== Enter Site =====
+function enterSite() {
+  envelopeScreen.classList.add('hidden');
+  inviteOverlay.classList.remove('active');
+  inviteOverlay.style.display = 'none';
+  mainSite.classList.add('visible');
+  document.body.style.overflow = '';
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
 }
 
-// ===== Scroll-based Nav Styling =====
-const nav = document.getElementById('nav');
-
-function onScroll() {
-  if (window.scrollY > 80) {
-    nav.classList.add('scrolled');
-  } else {
-    nav.classList.remove('scrolled');
-  }
-}
-
-window.addEventListener('scroll', onScroll, { passive: true });
-
-// ===== Mobile Nav Toggle =====
-const navToggle = document.getElementById('nav-toggle');
-const navLinks = document.getElementById('nav-links');
-
-navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-});
-
-navLinks.addEventListener('click', (e) => {
-  if (e.target.tagName === 'A') {
-    navLinks.classList.remove('open');
-    // Reveal all fade-in elements when navigating via anchor links
-    setTimeout(() => {
-      document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
-    }, 300);
-  }
-});
-
-// Reveal all fade-in elements when any anchor link is clicked
-document.addEventListener('click', (e) => {
-  const link = e.target.closest('a[href^="#"]');
-  if (link) {
-    setTimeout(() => {
-      document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
-    }, 300);
-  }
-});
-
-// ===== Fade-in on Scroll (IntersectionObserver) =====
-function initFadeObserver() {
-  const fadeElements = document.querySelectorAll('.fade-in');
-  const fadeObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          fadeObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
-  fadeElements.forEach((el) => fadeObserver.observe(el));
-}
-
-// ===== Envelope Replay =====
+// ===== Replay Invite (called from inline onclick) =====
 function replayInvite() {
-  localStorage.removeItem('seen-intro');
   envelope.classList.remove('opened');
   envelopeScreen.classList.remove('hidden');
   inviteOverlay.classList.remove('active');
@@ -185,22 +63,72 @@ function replayInvite() {
   window.scrollTo(0, 0);
 }
 
+// ===== Countdown Timer =====
+var WEDDING_DATE = new Date('2026-06-26T13:30:00+01:00');
+
+function updateCountdown() {
+  var el = document.getElementById('countdown');
+  if (!el) return;
+
+  var now = new Date();
+  var diff = WEDDING_DATE - now;
+
+  if (diff <= 0) {
+    el.innerHTML = '<p style="font-size:1.2rem; letter-spacing:2px;">Today is the day!</p>';
+    return;
+  }
+
+  var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  var minutes = Math.floor((diff / (1000 * 60)) % 60);
+  var seconds = Math.floor((diff / 1000) % 60);
+
+  el.innerHTML =
+    '<div class="countdown-unit"><span class="countdown-number">' + days + '</span><span class="countdown-label">Days</span></div>' +
+    '<div class="countdown-unit"><span class="countdown-number">' + hours + '</span><span class="countdown-label">Hours</span></div>' +
+    '<div class="countdown-unit"><span class="countdown-number">' + minutes + '</span><span class="countdown-label">Min</span></div>' +
+    '<div class="countdown-unit"><span class="countdown-number">' + seconds + '</span><span class="countdown-label">Sec</span></div>';
+}
+
+// ===== Scroll-based Nav Styling =====
+var nav = document.getElementById('nav');
+window.addEventListener('scroll', function () {
+  if (window.scrollY > 80) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+}, { passive: true });
+
+// ===== Mobile Nav Toggle =====
+var navToggle = document.getElementById('nav-toggle');
+var navLinks = document.getElementById('nav-links');
+
+navToggle.addEventListener('click', function () {
+  navLinks.classList.toggle('open');
+});
+
+navLinks.addEventListener('click', function (e) {
+  if (e.target.tagName === 'A') {
+    navLinks.classList.remove('open');
+  }
+});
+
 // ===== RSVP Form Handling =====
-// Replace this URL after deploying the Google Apps Script web app
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzhKfDvsdxOOyOn_5wArSvx2BfZWOkeZ9Datt84X9NRONKXg4P6psyEEZpAxbYISK4QnQ/exec';
+var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzhKfDvsdxOOyOn_5wArSvx2BfZWOkeZ9Datt84X9NRONKXg4P6psyEEZpAxbYISK4QnQ/exec';
 
-const form = document.getElementById('rsvp-form');
-const formStatus = document.getElementById('form-status');
+var form = document.getElementById('rsvp-form');
+var formStatus = document.getElementById('form-status');
 
-form.addEventListener('submit', async (e) => {
+form.addEventListener('submit', function (e) {
   e.preventDefault();
   formStatus.textContent = '';
   formStatus.className = 'form-status';
 
-  const guest1Name = form.elements.guest1_name.value.trim();
-  const email = form.elements.email.value.trim();
-  const day1 = form.elements.day1.value;
-  const day2 = form.elements.day2.value;
+  var guest1Name = form.elements.guest1_name.value.trim();
+  var email = form.elements.email.value.trim();
+  var day1 = form.elements.day1.value;
+  var day2 = form.elements.day2.value;
 
   if (!guest1Name || !email || !day1 || !day2) {
     formStatus.textContent = 'Please fill in all required fields.';
@@ -208,16 +136,14 @@ form.addEventListener('submit', async (e) => {
     return;
   }
 
-  const submitBtn = form.querySelector('button[type="submit"]');
+  var submitBtn = form.querySelector('button[type="submit"]');
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending...';
 
-  try {
-    const response = await fetch(APPS_SCRIPT_URL, {
-      method: 'POST',
-      body: new URLSearchParams(new FormData(form)),
-    });
-
+  fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    body: new URLSearchParams(new FormData(form))
+  }).then(function (response) {
     if (response.ok) {
       formStatus.textContent = 'Thank you! Your RSVP has been received.';
       formStatus.classList.add('success');
@@ -225,12 +151,11 @@ form.addEventListener('submit', async (e) => {
     } else {
       throw new Error('Server error');
     }
-  } catch {
-    formStatus.textContent =
-      'Something went wrong. Please try again or contact us directly.';
+  }).catch(function () {
+    formStatus.textContent = 'Something went wrong. Please try again or contact us directly.';
     formStatus.classList.add('error');
-  } finally {
+  }).finally(function () {
     submitBtn.disabled = false;
     submitBtn.textContent = 'Send RSVP';
-  }
+  });
 });
