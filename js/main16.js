@@ -173,20 +173,17 @@ function initFadeObserver() {
 }
 
 // ===== Envelope Replay =====
-document.getElementById('envelope-replay').addEventListener('click', () => {
+function replayInvite() {
   localStorage.removeItem('seen-intro');
-  // Reset envelope state
   envelope.classList.remove('opened');
   envelopeScreen.classList.remove('hidden');
   inviteOverlay.classList.remove('active');
   inviteOverlay.style.display = '';
   mainSite.classList.remove('visible');
   document.body.style.overflow = 'hidden';
-  // Reset carousel to page 1
   showPage(0);
-  // Scroll main site back to top for when they return
   window.scrollTo(0, 0);
-});
+}
 
 // ===== RSVP Form Handling =====
 // Replace this URL after deploying the Google Apps Script web app
