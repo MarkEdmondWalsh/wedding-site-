@@ -539,6 +539,16 @@ a:hover {
 }
 
 /* ===== Our Story ===== */
+.story-photo {
+  display: block;
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 32px auto 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
 .story-content {
   max-width: 680px;
   margin: 40px auto 0;
