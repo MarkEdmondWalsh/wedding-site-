@@ -124,6 +124,20 @@ navToggle.addEventListener('click', () => {
 navLinks.addEventListener('click', (e) => {
   if (e.target.tagName === 'A') {
     navLinks.classList.remove('open');
+    // Reveal all fade-in elements when navigating via anchor links
+    setTimeout(() => {
+      document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+    }, 300);
+  }
+});
+
+// Reveal all fade-in elements when any anchor link is clicked
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('a[href^="#"]');
+  if (link) {
+    setTimeout(() => {
+      document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+    }, 300);
   }
 });
 
