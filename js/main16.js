@@ -127,10 +127,10 @@ form.addEventListener('submit', function (e) {
 
   var guest1Name = form.elements.guest1_name.value.trim();
   var email = form.elements.email.value.trim();
-  var day1 = form.elements.day1.value;
-  var day2 = form.elements.day2.value;
+  var guest1Day1 = form.elements.guest1_day1.value;
+  var guest1Day2 = form.elements.guest1_day2.value;
 
-  if (!guest1Name || !email || !day1 || !day2) {
+  if (!guest1Name || !email || !guest1Day1 || !guest1Day2) {
     formStatus.textContent = 'Please fill in all required fields.';
     formStatus.classList.add('error');
     return;

@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style16.css?v=15">
+  <link rel="stylesheet" href="css/style16.css?v=16">
 </head>
 <body>
 
@@ -221,6 +221,22 @@
               <label for="guest1-name">Full Name *</label>
               <input type="text" id="guest1-name" name="guest1_name" required>
             </div>
+            <div class="form-group">
+              <label for="guest1-day1">Friday — The Wedding *</label>
+              <select id="guest1-day1" name="guest1_day1" required>
+                <option value="">Please select</option>
+                <option value="yes">Joyfully accepts</option>
+                <option value="no">Regretfully declines</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="guest1-day2">Saturday — Bill Chawke's *</label>
+              <select id="guest1-day2" name="guest1_day2" required>
+                <option value="">Please select</option>
+                <option value="yes">I'll be there!</option>
+                <option value="no">Unfortunately not</option>
+              </select>
+            </div>
             <div class="form-group form-group-checkbox">
               <label>
                 <input type="checkbox" id="guest1-vegetarian" name="guest1_vegetarian" value="yes">
@@ -234,6 +250,22 @@
               <label for="guest2-name">Full Name</label>
               <input type="text" id="guest2-name" name="guest2_name" placeholder="Leave blank if attending alone">
             </div>
+            <div class="form-group">
+              <label for="guest2-day1">Friday — The Wedding</label>
+              <select id="guest2-day1" name="guest2_day1">
+                <option value="">N/A</option>
+                <option value="yes">Joyfully accepts</option>
+                <option value="no">Regretfully declines</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="guest2-day2">Saturday — Bill Chawke's</label>
+              <select id="guest2-day2" name="guest2_day2">
+                <option value="">N/A</option>
+                <option value="yes">I'll be there!</option>
+                <option value="no">Unfortunately not</option>
+              </select>
+            </div>
             <div class="form-group form-group-checkbox">
               <label>
                 <input type="checkbox" id="guest2-vegetarian" name="guest2_vegetarian" value="yes">
@@ -244,22 +276,6 @@
           <div class="form-group">
             <label for="email">Email *</label>
             <input type="email" id="email" name="email" required>
-          </div>
-          <div class="form-group">
-            <label for="day1">Friday — The Wedding *</label>
-            <select id="day1" name="day1" required>
-              <option value="">Please select</option>
-              <option value="yes">Joyfully accepts</option>
-              <option value="no">Regretfully declines</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="day2">Saturday — Bill Chawke's *</label>
-            <select id="day2" name="day2" required>
-              <option value="">Please select</option>
-              <option value="yes">We'll be there!</option>
-              <option value="no">Unfortunately not</option>
-            </select>
           </div>
           <button type="submit" class="btn btn-full">Send RSVP</button>
           <div class="form-status" id="form-status"></div>
@@ -301,7 +317,7 @@
 
   </div><!-- end main-site -->
 
-  <script src="js/main16.js?v=15"></script>
+  <script src="js/main16.js?v=16"></script>
 </body>
 </html>
 
