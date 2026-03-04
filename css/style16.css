@@ -17,9 +17,10 @@
   --charcoal: #3a3a3a;
   --text: #4a4a4a;
   --text-light: #7a7a7a;
-  --font-heading: 'Pinyon Script', cursive;
-  --font-body: 'EB Garamond', Georgia, serif;
-  --font-script: 'Pinyon Script', cursive;
+  --font-heading: 'Great Vibes', cursive;
+  --font-body: 'Libre Caslon Text', Georgia, serif;
+  --font-display: 'Libre Caslon Display', Georgia, serif;
+  --font-script: 'Great Vibes', cursive;
 }
 
 html {
