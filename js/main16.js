@@ -115,7 +115,7 @@ navLinks.addEventListener('click', function (e) {
 });
 
 // ===== RSVP Form Handling =====
-var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzhKfDvsdxOOyOn_5wArSvx2BfZWOkeZ9Datt84X9NRONKXg4P6psyEEZpAxbYISK4QnQ/exec';
+var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzIIqyblNJY39gBrEAneidX_cCwIW9cButK6DlGBQqA_5Xeq6iwEQ5TOGAg4yxjr_nCew/exec';
 
 var form = document.getElementById('rsvp-form');
 var formStatus = document.getElementById('form-status');
