@@ -120,8 +120,17 @@ var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzhKfDvsdxOOyOn_5
 var form = document.getElementById('rsvp-form');
 var formStatus = document.getElementById('form-status');
 
+// Set up form to always submit into hidden iframe
+var rsvpIframe = document.createElement('iframe');
+rsvpIframe.name = 'rsvp-iframe';
+rsvpIframe.style.display = 'none';
+document.body.appendChild(rsvpIframe);
+
+form.action = APPS_SCRIPT_URL;
+form.method = 'POST';
+form.target = 'rsvp-iframe';
+
 form.addEventListener('submit', function (e) {
-  e.preventDefault();
   formStatus.textContent = '';
   formStatus.className = 'form-status';
 
@@ -131,31 +140,22 @@ form.addEventListener('submit', function (e) {
   var guest1Day2 = form.elements.guest1_day2.value;
 
   if (!guest1Name || !email || !guest1Day1 || !guest1Day2) {
+    e.preventDefault();
     formStatus.textContent = 'Please fill in all required fields.';
     formStatus.classList.add('error');
     return;
   }
 
+  // Allow the form to submit naturally into the hidden iframe
   var submitBtn = form.querySelector('button[type="submit"]');
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending...';
 
-  fetch(APPS_SCRIPT_URL, {
-    method: 'POST',
-    body: new URLSearchParams(new FormData(form))
-  }).then(function (response) {
-    if (response.ok) {
-      formStatus.textContent = 'Thank you! Your RSVP has been received.';
-      formStatus.classList.add('success');
-      form.reset();
-    } else {
-      throw new Error('Server error');
-    }
-  }).catch(function () {
-    formStatus.textContent = 'Something went wrong. Please try again or contact us directly.';
-    formStatus.classList.add('error');
-  }).finally(function () {
+  setTimeout(function () {
+    formStatus.textContent = 'Thank you! Your RSVP has been received.';
+    formStatus.classList.add('success');
+    form.reset();
     submitBtn.disabled = false;
     submitBtn.textContent = 'Send RSVP';
-  });
+  }, 2000);
 });
